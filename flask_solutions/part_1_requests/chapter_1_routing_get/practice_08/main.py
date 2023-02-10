@@ -5,6 +5,7 @@
 from flask import Flask, request
 
 alphabet = {
+
   "A": "Alfa",
   "B": "Bravo",
   "C": "Charlie",
@@ -32,9 +33,6 @@ alphabet = {
   "Y": "Yankee",
   "Z": "Zulu",
 }
-
-app = Flask(__name__)
-
 @app.route('/search/')
 def page_search():
     s = request.values.get("s")
@@ -42,6 +40,8 @@ def page_search():
         return ""
     result = [word for word in list(alphabet.values()) if s in word.lower()]
     return ", ".join(result)
+
+app = Flask(__name__)
 
 if __name__ == '__main__':
   app.run(host='127.0.0.1', port=8000, debug=True)
